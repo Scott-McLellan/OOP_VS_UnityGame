@@ -7,7 +7,7 @@ using System.Data.SqlTypes;
 public class PlayerMovement : MonoBehaviour
 {
 
-    
+    private SpriteRenderer spriteRenderer;
 
     public float GetDistance(Vector2 a, Vector2 b)
     {
@@ -18,14 +18,24 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.A))
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            spriteRenderer.flipX = false;
+        }
+        
         Vector3 moveInput = new Vector3(0f, 0f, 0f);
         moveInput.x = Input.GetAxisRaw("Horizontal");
+        
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         Debug.Log(moveInput);
