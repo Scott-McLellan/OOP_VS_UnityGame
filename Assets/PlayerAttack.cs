@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
 
             if (dist < 2)
             {
-                enemy.TakeDamage(15);
+                //enemy.TakeDamage(15);
             }
         }
     }
