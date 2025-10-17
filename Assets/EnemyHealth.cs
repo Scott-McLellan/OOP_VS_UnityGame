@@ -3,14 +3,10 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
-    
-    
-    public int health;
-    public int maxEnemyHealth = 100;
-    
     public override void Die()
     {
         Debug.Log(gameObject.name + " has been defeated!");
+        ScoreManager.Instance.AddScore(50);
         base.Die(); 
     }
     
@@ -21,10 +17,10 @@ public class EnemyHealth : Health
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /*void Start()
     {
         health = maxEnemyHealth;
-    }
+    }*/
 
     // Update is called once per frame
   

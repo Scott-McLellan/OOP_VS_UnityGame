@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float attackCooldown = 0.5f;
-    public float attackTimer;
+    private float attackTimer;
     public bool canAttack = true;
     private PlayerHealth playerHealth; 
     Transform target;
@@ -13,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
         Debug.Log("Enemy is Attacking");
         attackTimer = attackCooldown;
         canAttack = false;
+        playerHealth.TakeDamage(10);
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,7 +34,6 @@ public class EnemyAttack : MonoBehaviour
             if (dist < 1 && canAttack)
             {
                 Attack();
-                playerHealth.TakeDamage(10);
             }
 
             if (!canAttack)

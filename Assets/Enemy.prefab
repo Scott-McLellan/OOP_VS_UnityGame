@@ -121,8 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d22479f634a064d824f7bc5d87d2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackCooldown: 0
-  attackTimer: 0
+  attackCooldown: 0.5
   canAttack: 1
 --- !u!114 &4575911117147703345
 MonoBehaviour:
@@ -139,5 +138,3 @@ MonoBehaviour:
   isDead: 0
   currentHealth: 0
   maxHealth: 100
-  health: 0
-  maxEnemyHealth: 100

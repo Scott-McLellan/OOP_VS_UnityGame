@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    
-    public int health;
-
-    public int maxHealth = 100;
-    
     public override void Die()
     {
         Time.timeScale = 0f; //When the player dies, the game pauses for now.
@@ -23,10 +18,10 @@ public class PlayerHealth : Health
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /*void Start()
     {
         health = maxHealth;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
