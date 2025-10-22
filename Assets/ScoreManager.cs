@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI; 
 
@@ -7,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     public int Score { get; private set; } = 0;
 
-    [SerializeField] private Text scoreText; //For the UI
+    [SerializeField] private TextMeshProUGUI scoreText; //For the UI
 
     private void Awake()
     {
