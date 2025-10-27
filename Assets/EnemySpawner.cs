@@ -4,19 +4,22 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject prefab;
     public float spawnDelay = 5f;
+    public float spawnRadius = 10f; // Radius around the spawner
     public string newTag = "Enemy";
-    
+
     public void SpawnEnemy()
     {
-        // Instantiate the enemy at the spawner's position and rotation
-        Instantiate(prefab, transform.position, transform.rotation);
+        Vector2 randomCircle = Random.insideUnitCircle * spawnRadius;
+        Vector3 randomPosition = new Vector3(transform.position.x + randomCircle.x, transform.position.y, transform.position.z + randomCircle.y);
+
+        Instantiate(prefab, randomPosition, Quaternion.identity);
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         InvokeRepeating("SpawnEnemy", 0f, spawnDelay);
-        prefab.tag = newTag;
     }
+
     
     
 
