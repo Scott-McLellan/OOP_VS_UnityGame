@@ -1,10 +1,22 @@
+using System;
 using UnityEngine;
-
+using System.Collections;
 
 public class EnemyHealth : Health
 {
     
+    IEnumerator FlashRedRoutine()
+    {
+        spriteRenderer.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = originalColor;
+    }
+
     public GameObject prefab;
+    private SpriteRenderer spriteRenderer;
+    public Color flashColor = Color.red;
+    public float flashDuration = 0.1f;
+    private Color originalColor;
     public override void Die()
     {
         Instantiate(prefab, transform.position, Quaternion.identity);
@@ -17,14 +29,20 @@ public class EnemyHealth : Health
     {
        base.TakeDamage(damageAmount);
        Debug.Log(gameObject.name + " took " + damageAmount + " damage. Current Health: " + currentHealth);
+       
+       if (spriteRenderer != null)
+       {
+           StartCoroutine(FlashRedRoutine());
+       }
     }
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    /*void Start()
-    {
-        health = maxEnemyHealth;
-    }*/
 
-    // Update is called once per frame
-  
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color; 
+        }
+    }
 }

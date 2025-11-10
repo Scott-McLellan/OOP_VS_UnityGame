@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public GameOverScreen gameOverScreen;
     public bool isDead = false;
-    
+
     public int currentHealth;
     public int maxHealth = 100;
-    
+
     public virtual void Die()
     {
         Debug.Log(gameObject.name + " has died!");
-        Destroy(gameObject);
         isDead = true;
+        Destroy(gameObject);
     }
-    
-    
+
     public virtual void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
@@ -24,10 +24,11 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     public virtual void Start()
     {
         currentHealth = maxHealth;
+        
     }
 
     // Update is called once per frame
